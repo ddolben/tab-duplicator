@@ -1,0 +1,30 @@
+{
+  "name": "Tab Duplicator",
+  "description": "Provides a shortcut for opening a link in a new tab with history, and a keyboard shortcut for duplicating tabs.",
+  "version": "0.6",
+  "permissions": [
+    "contextMenus",
+    "tabs"
+  ],
+  "background": {
+    "scripts": ["duplicator.js"]
+  },
+  "content_scripts": [{
+    "matches": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "run_at": "document_end",
+    "js": ["link-injector.js"]
+  }],
+  "manifest_version": 2,
+  "commands": {
+    "duplicate-tab": {
+      "suggested_key": {
+        "default": "Alt+Shift+D",
+        "mac": "Alt+Shift+D"
+      },
+      "description": "Duplicate Tab"
+    }
+  }
+}
